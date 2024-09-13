@@ -27,9 +27,9 @@ def browser():
 
 @pytest.fixture(scope="session")
 def auth(browser):
-    browser.get(os.getenv("BASE_URL"))
+    browser.get(str(os.getenv("BASE_URL")))
     login_page = LoginPage(browser)
-    login_page.login(os.getenv("LOGIN_USER"), os.getenv("LOGIN_PASS"))
+    login_page.login(str(os.getenv("LOGIN_USER")), str(os.getenv("LOGIN_PASS")))
     take_screenshot(browser, "step_1_auth")
     yield browser
 
